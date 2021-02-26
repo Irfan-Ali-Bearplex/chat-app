@@ -9,7 +9,8 @@ import Input from '../Input/Input';
 
 import './Chat.css';
 
-const ENDPOINT = 'http://localhost:5200/';
+// const ENDPOINT = 'http://localhost:5200/';
+const ENDPOINT = 'https://bearplex-chat-server.herokuapp.com/';
 
 let socket;
 
