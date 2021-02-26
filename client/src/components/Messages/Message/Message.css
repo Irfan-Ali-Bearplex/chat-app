@@ -67,3 +67,7 @@
 .backgroundLight {
     background: #F3F3F3;
 }
+
+.capitalize {
+    text-transform: capitalize;
+}

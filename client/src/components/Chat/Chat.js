@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 
@@ -13,6 +14,7 @@ const ENDPOINT = 'http://localhost:5200/';
 let socket;
 
 const Chat = ({ location }) => {
+	let history = useHistory();
 	const [name, setName] = useState('');
 	const [room, setRoom] = useState('');
 	const [users, setUsers] = useState('');
@@ -36,7 +38,12 @@ const Chat = ({ location }) => {
 
 	useEffect(() => {
 		socket.on('message', (message) => {
-			setMessages((messages) => [...messages, message]);
+			console.log(message.error);
+			if (message.hasOwnProperty('error')) {
+				history.push('/');
+			} else {
+				setMessages((messages) => [...messages, message]);
+			}
 		});
 
 		socket.on('roomData', ({ users }) => {
